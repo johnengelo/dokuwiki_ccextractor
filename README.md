@@ -1,6 +1,6 @@
 # dokuwiki_ccextractor
 
-<h2>This is a work in progress template to be possibly used for the <a href="ccextractor.org">CCExtractor</a> organization site </h2>
+<h2>This is a work in progress template to be possibly used for the <a href="https://ccextractor.org">CCExtractor</a> organization site </h2>
 <h4>This template uses Bootstrap 4.1 as its CSS framework, and Roboto fonts for the default font</h4>
 <i>The DokuWiki syntax template depends on the <strong>[bootswrapper]</strong> plugin to utilize Bootstrap components.</i>
 
