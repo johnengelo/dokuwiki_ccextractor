@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono');
-@import url("https://use.fontawesome.com/releases/v5.5.0/css/all.css");
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
 body {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .navbar {
@@ -21,12 +20,7 @@ body {
     margin-top: 1.5em;
 }
 
-#navbar-contents {
-    margin-right: 0;
-}
-
 .nav-item {
-    text-align: center;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 1px;
 }
@@ -51,13 +45,11 @@ body {
 
 .nav-item .dropdown {
     display: inline-flex;
-    margin-right: 1em;
 }
 
 .tools_dropdown {
     height: auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -136,6 +128,19 @@ main {
     height: auto;
 }
 
+.colored-text {
+    color: #189FA9;
+}
+
+.main-bg {
+    background-color: #E9ECEF;
+}
+
+.breadcrumbs {
+    border-radius: 1.5em;
+    padding: 0.5rem;
+}
+
 /*--------------*/
 /*--- Footer ---*/
 /*--------------*/
@@ -154,4 +159,15 @@ footer {
 
 footer ul li {
     list-style-type: none;
+}
+
+
+/*-------------------*/
+/*-- Media Queries --*/
+/*-------------------*/
+
+@media (max-width: 768px) {
+    aside, #sidebar-left {
+        display: none;
+    }
 }

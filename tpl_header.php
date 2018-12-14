@@ -28,21 +28,21 @@ if (!defined('DOKU_INC')) {
         </div>
         
         <!-- [ Navbar Toggler | Font-Awesome Bars Icon ] -->
-        <button class="navbar-toggler" id="main_navbar-menu" type="button" data-toggle="collapse" data-target="#navbar_contents" aria-controls="navbar_contents" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler ml-auto;" id="main_navbar-menu" type="button" data-toggle="collapse" data-target="#navbar_contents" aria-controls="navbar_contents" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars" style="color: #189FA9;"></i>
         </button>
         <!-- [ Navbar Items ] -->
-        <div class="collapse navbar-collapse mr-auto" id="navbar_contents">
+        <div class="collapse navbar-collapse" id="navbar_contents">
             <!-- [ Left-side Search Form ] -->
             <div class="search mr-auto" id="searchform">
                 <?php tpl_searchform_ccextractor() ?>
             </div>
             
-            <div class="tools_dropdown mr-auto">
+            <div class="tools_dropdown">
                 <?php if (!empty($_SERVER['REMOTE_USER'])) { ?>
                         
                 <!-- [ User / Admin Tools Dropdown ] -->
-                <li class="nav-item dropdown ml-auto">
+                <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarusertools" role="button" aria-haspopup="true" aria-expanded="false" title="<?php $lang['loggedinas'] . $_SERVER['REMOTE_USER'] ?>">
                         <?php print '<i class="fas fa-user-circle" style="font-size: 2rem; color: #189FA9;"></i>'/* . ucfirst(editorinfo($_SERVER['REMOTE_USER'], true)); */?>
                     </a>
@@ -54,7 +54,7 @@ if (!defined('DOKU_INC')) {
                 </li>
                     
                 <?php } else { ?>
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarlogin" role="button" aria-haspopup="true" aria-expanded="false" title="<?php $lang['loggedinas'] . $_SERVER['REMOTE_USER'] ?>">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarlogin" role="button" aria-haspopup="true" aria-expanded="false">
                             <?php print '<i class="fas fa-sign-in-alt" style="font-size: 2rem; color: #189FA9;"></i>'/* . ucfirst(editorinfo($_SERVER['REMOTE_USER'], true)); */?>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarlogin">
@@ -66,8 +66,8 @@ if (!defined('DOKU_INC')) {
                         
                 <!-- Page Tools -->
                 
-                <li class="nav-item dropdown ml-auto">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarpagetools" role="button" aria-haspopup="true" aria-expanded="false" title="<?php'.$lang['loggedinas'].$_SERVER['REMOTE_USER'].'?>">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarpagetools" role="button" aria-haspopup="true" aria-expanded="false" title="<?php echo $lang['loggedinas'].$_SERVER['REMOTE_USER']?>">
                         <span class="dropdown_links pull-left"><i class="fas fa-sliders-h" style="font-size: 1.75rem; color: #189FA9;"></i></span>
                     </a>
 

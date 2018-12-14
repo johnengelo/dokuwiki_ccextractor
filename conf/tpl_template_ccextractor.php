@@ -70,14 +70,14 @@ function tpl_youarehere_ccx($sep = null, $return = false) {
     if(!$conf['youarehere']) return false;
 
     //set default
-    if(is_null($sep)) $sep = ' &ensp; <i class="fas fa-caret-right"></i> &ensp; ';
+    if(is_null($sep)) $sep = ' &ensp; <i class="fas fa-chevron-circle-right"></i> &ensp; ';
 
     $out = '';
 
     $parts = explode(':', $ID);
     $count = count($parts);
 
-    $out .= '<span class="bchead">'.$lang['youarehere'].' </span>';
+    $out .= '<span class="bchead">'.'<i class="fas fa-map-marker-alt">'.'</i>'.'&ensp;Current Page: &emsp;'.' </span>';
 
     // always print the startpage
     $out .= '<span class="home">' . tpl_pagelink(':'.$conf['start'], null, true) . '</span>';

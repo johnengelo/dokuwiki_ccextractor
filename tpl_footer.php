@@ -11,13 +11,13 @@ if (!defined('DOKU_INC')) {
 }
 ?>
 
-<footer id="dokuwiki__footer" class="footer" style="position: relative; bottom: 0 !important;">
+<footer id="dokuwiki__footer" class="footer" style="position: relative; margin-bottom: 0 !important;">
     <br /><br />
-    <div class="container-fluid text-center text-md-left" id="footer_container">
+    <div class="container text-center text-md-left" id="footer_container">
         
         <div class="row">
             
-            <div class="col-md-6 mt-md-0 mt-3">
+            <div class="col-md-3">
                 
                 <h4>
                     <?php
@@ -41,47 +41,47 @@ if (!defined('DOKU_INC')) {
             <hr class="clearfix w-100 d-md-none pb-3">
 
         <!-- Links Column -->
-        <div class="col">
+        <div class="col-md-3">
 
             <!-- Links -->
             <h5 class="text-uppercase">GENERAL</h5>
 
             <ul class="footer-list">
               <li>
-                <a href="#!">Link 1</a>
+                <?php tpl_link(wl('about'), hsc('About Us'), 'title="About Us" class="footer-item"'); ?>
               </li>
               <li>
-                <a href="#!">Link 2</a>
+                <?php tpl_link(wl('download'), hsc('Download'), 'title="Download" class="footer-item"'); ?>
               </li>
               <li>
-                <a href="#!">Link 3</a>
+                <?php tpl_link(wl('documentation'), hsc('Documentation'), 'title="Documentation" class="footer-item"'); ?>
               </li>
               <li>
-                <a href="#!">Link 4</a>
+                <?php tpl_link(wl('installguide'), hsc('Installation Guide'), 'title="Installation Guide" class="footer-item"'); ?>
               </li>
             </ul>
 
           </div>
           <!-- Grid column -->
 
-          <!-- Grid column -->
-          <div class="col">
+        <!-- Grid column -->
+        <div class="col-md-3">
 
             <!-- Links -->
             <h5 class="text-uppercase">SUPPORT</h5>
 
             <ul class="footer-list">
               <li>
-                <a href="#!">Link 1</a>
+                <?php tpl_link(wl('reporting-issues'), hsc('Reporting Issues'), 'title="Reporting Issues" class="footer-item"'); ?>
               </li>
               <li>
-                <a href="#!">Link 2</a>
+                <?php tpl_link(wl('slack-channel'), hsc('Slack Channel'), 'title="Slack Channel" class="footer-item"'); ?>
               </li>
               <li>
-                <a href="#!">Link 3</a>
+                <?php tpl_link(wl('mailinglist'), hsc('Mailing List'), 'title="Mailing List" class="footer-item"'); ?>
               </li>
               <li>
-                <a href="#!">Link 4</a>
+                <?php tpl_link(wl('github'), hsc('GitHub'), 'title="Mailing List" class="footer-item"'); ?>
               </li>
             </ul>
 

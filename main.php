@@ -29,14 +29,18 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
     <head>
     
         <meta charset="UTF-8" />
+        
         <!-- [ Page Title ] -->
         <title><?php tpl_pagetitle(); ?> :: <?php echo strip_tags($conf['title']) ?></title>
         <script>(function (H) {
             H.className = H.className.replace(/\bno-js\b/, 'js')
         })(document.documentElement)</script>
         <meta name="viewport" content="width=device-width"/>
-        <meta name="author" content="John Chew">
-        <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
+        <?php echo tpl_favicon(array('favicon', 'mobile')); ?>
+        
+        <!-- Favicon [forces an update to show the icon] -->
+        <link rel="shortcut icon" href="images/favicon.ico?v=2" type="image/x-icon">        
+        
         <?php tpl_includeFile('meta.html') ?>
         
         <?php tpl_metaheaders() ?>
@@ -44,7 +48,6 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
         <!-- [ Must be run after tpl_metaheaders() due to difference in jQuery versions ] -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-        <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
         <!-- CCExtractor DokuWiki CSS Stylesheet -->
         <link href="<?php echo tpl_getMediaFile(array("css/userstyle.css")); ?>" rel="stylesheet">
         
@@ -59,24 +62,6 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
             include('tpl_header.php');
         ?>
         
-        <!-- [ Sidebar ] -->
-        <?php if($showSidebar): ?>    
-        <!-- [ Aside ] -->
-            <div id="dokuwiki__aside">
-                <div class="pad aside include group">
-                    <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
-                    <div class="content">
-                        <div class="group">
-                            <?php tpl_flush() ?>
-                            <?php tpl_includeFile('sidebarheader.html') ?>
-                            <?php tpl_include_page($conf['sidebar'], true, true) ?>
-                            <?php tpl_includeFile('sidebarfooter.html') ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
-        
         <div class="main">
             
             <!-- [ Content: show, edit, etc., ] -->
@@ -89,7 +74,7 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
                     <aside class="col-12 col-md-2 p-0" id="leftsidebar">
                         <nav class="navbar navbar-expand navbar-dark flex-md-column flex-row align-items-start py-2" id="sidebar-left">
                             <div class="collapse navbar-collapse">
-                                <ul class="flex-md-column flex-row navbar-nav justify-content-between" id="sidebar-content">
+                                <ul class="flex-md-column flex-row navbar-nav justify-content-between" id="sidebar-content" style="list-style-type:none;">
                                     <div class="navbar-item" id="navbar_brand_sidebar">
                                         <?php
                                             // Get logo either out of the template images folder or data/media folder
@@ -102,46 +87,47 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
                                             );
                                         ?>
                                     </div>
+                                    <div class="sitename">
+                                        <h2 class="colored-text" style="font-family: 'Roboto Bold', sans-serif;"><?php echo strip_tags($conf['title']) ?></h2>
+                                    </div>
+                                    <div class="loggedin_as">
+                                        <p class="colored-text"><?php echo $lang['loggedinas'] . $_SERVER['REMOTE_USER'] ?></p>
+                                    </div>
                                     
-                                    <li class="nav-item">
-                                        <?php tpl_link(wl('home'), hsc('HOME'), 'title="Home | CCExtractor" class="nav-link" id="sidebar_nav-item"'); ?>
-                                    </li>
-                                    <li class="nav-item">
-                                        <?php tpl_link(wl('about'), hsc('ABOUT'), 'title="Home | CCExtractor" class="nav-link" id="sidebar_nav-item"'); ?>
-                                    </li>
-                                    <li class="nav-item">
-                                        <?php tpl_link(wl('download'), hsc('DOWNLOAD'), 'title="Home | CCExtractor" class="nav-link" id="sidebar_nav-item"'); ?>
-                                    </li>
-                                    <li class="nav-item">
-                                        <?php tpl_link(wl('documentation'), hsc('DOCUMENTATION'), 'title="Home | CCExtractor" class="nav-link" id="sidebar_nav-item"'); ?>
-                                    </li>
-                                    <li class="nav-item">
-                                        <?php tpl_link(wl('support'), hsc('SUPPORT'), 'title="Home | CCExtractor" class="nav-link" id="sidebar_nav-item"'); ?>
-                                    </li>
                                 </ul>
                             </div>
                         </nav>
                     </aside>
+                    
+                    <!-- [ Main Content (Right-side) ] -->
+                    
                     <main class="col bg-faded py-3">
-                        <div class="jumbotron" id="maincontent_bg" style="border-radius: 0px;">
+                        
+                        <!-- [ Breadcrumbs | Custom Breadcrumbs ] -->
+                        <div class="container breadcrumbs colored-text main-bg mt-2 mb-2">
                             <div class="container">
-                                <!-- [ Breadcrumbs | Custom Breadcrumbs ] -->
-                                <div class="breadcrumbs">
                                 <?php
                                     tpl_youarehere_ccx();
                                 ?>
-                                </div>
-                                
-                                
-                                
+                            </div>
+                        </div>
+                        
+                        <!-- [ Page Content ] -->
+                        
+                        <div class="jumbotron" id="maincontent_bg" style="border-radius: 5px;">
+                            <div class="container">
                                 <!-- [ Message Area ] -->
                                 <?php html_msgarea() ?>
                                 <!-- [ Main Page Content - Start ] -->
                                 <?php tpl_content($prependTOC = false) ?>
                                 <!-- [ Main Content - End] -->
-                                
                             </div>
                         </div>
+                        
+                        <div class="container bg-faded ml-auto main-bg">
+                            <p class="colored-text"><?php tpl_pageinfo() ?></p>
+                        </div>
+                    
                     </main>
                 </div>
             </div>
@@ -149,22 +135,30 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
             <!-- [ Page Content | End ] -->
             
             <?php //tpl_includeFile('pagefooter.html') ?>
-            
-            <?php //tpl_pageinfo() ?>
             <?php tpl_flush() ?>
             
         </div>
 
-        
-        <?php 
-            include('tpl_footer.php');
-        ?>
-        
-        <div class="no">
+        <div class="no" style="display: none;">
             <?php tpl_indexerWebBug() ?>
         </div>
         <div id="screen__mode" class="no"></div>
         
+        <hr class="a11y"/>
+        
+        <div id="dokuwiki__pagetools">
+                <h3 class="a11y"><?php echo $lang['page_tools']; ?></h3>
+                <div class="tools">
+                    <ul>
+                        <?php echo (new \dokuwiki\Menu\PageMenu())->getListItems(); ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <?php 
+            include('tpl_footer.php');
+        ?>
         
         <!-- [ jQuery CDN - Slim version (=without AJAX) ] -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
