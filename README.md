@@ -1,4 +1,4 @@
-# dokuwiki_ccextractor
+<span><img src="images/logo_large.png"/><h1>DokuWiki CCExtractor Theme</h1></span>
 
 <h2>This is a work in progress template to be possibly used for the <a href="https://ccextractor.org">CCExtractor</a> organization site </h2>
 <h4>This template uses Bootstrap 4.1 as its CSS framework, and Roboto fonts for the default font</h4>
