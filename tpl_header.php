@@ -7,12 +7,8 @@ if (!defined('DOKU_INC')) {
 ?>
 
 <? tpl_includeFile('header.html'); ?>
-<link href="css/userstyle.css" rel="stylesheet">
-
 <nav class="navbar navbar-expand-md navbar-dark">
-
     <div class="navbar_main">
-        
         <!-- [ Logo / Brand ] -->
         <div class="navbar-item" id="navbar_brand">
             <?php
@@ -43,10 +39,12 @@ if (!defined('DOKU_INC')) {
                         
                 <!-- [ User / Admin Tools Dropdown ] -->
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarusertools" role="button" aria-haspopup="true" aria-expanded="false" title="<?php $lang['loggedinas'] . $_SERVER['REMOTE_USER'] ?>">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarusertools" role="button" aria-haspopup="true" aria-expanded="false">
                         <?php print '<i class="fas fa-user-circle" style="font-size: 2rem; color: #189FA9;"></i>'/* . ucfirst(editorinfo($_SERVER['REMOTE_USER'], true)); */?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarusertools">
+                        <p class="colored-text" align="left" style="padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 0.5rem;"><?php echo 'Logged in as: ' . '<strong>' . $_SERVER['REMOTE_USER'] . '</strong>' ?></p>
+                        <hr>
                         <?php
                             echo (new \dokuwiki\Menu\UserMenu())->getListItems('action dropdown-item nav-item ', false);
                         ?>
@@ -54,12 +52,12 @@ if (!defined('DOKU_INC')) {
                 </li>
                     
                 <?php } else { ?>
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarlogin" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarlogin" role="button" aria-haspopup="false" aria-expanded="false">
                             <?php print '<i class="fas fa-sign-in-alt" style="font-size: 2rem; color: #189FA9;"></i>'/* . ucfirst(editorinfo($_SERVER['REMOTE_USER'], true)); */?>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarlogin">
                             <?php
-                                echo (new \dokuwiki\Menu\UserMenu())->getListItems('action nav-link ', false);
+                                echo (new \dokuwiki\Menu\UserMenu())->getListItems('action dropdown-item nav-link ', false);
                             ?>
                         </ul>
                 <?php } ?>

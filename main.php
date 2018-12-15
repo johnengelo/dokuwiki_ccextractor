@@ -49,7 +49,9 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <!-- CCExtractor DokuWiki CSS Stylesheet -->
-        <link href="<?php echo tpl_getMediaFile(array("css/userstyle.css")); ?>" rel="stylesheet">
+        <link href="<?php echo tpl_getMediaFile(array("css/mainstyle.less")); ?>" rel="stylesheet/less" type="text/css">
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
         
     </head>
     
@@ -71,36 +73,8 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
             <!-- [ Page Content | Start ] -->
             <div class="container-fluid">
                 <div class="row">
-                    <aside class="col-12 col-md-2 p-0" id="leftsidebar">
-                        <nav class="navbar navbar-expand navbar-dark flex-md-column flex-row align-items-start py-2" id="sidebar-left">
-                            <div class="collapse navbar-collapse">
-                                <ul class="flex-md-column flex-row navbar-nav justify-content-between" id="sidebar-content" style="list-style-type:none;">
-                                    <div class="navbar-item" id="navbar_brand_sidebar">
-                                        <?php
-                                            // Get logo either out of the template images folder or data/media folder
-                                            $logoSize = array();
-                                            $logo = tpl_getMediaFile(array(':wiki:logo.png', 'images/logo_large.png', 'images/logo.png', 'images/ccextractor_logotype.png' ), false, $logoSize);
-                                            // Display logo in a link to the home page
-                                            tpl_link(
-                                                wl(),
-                                                '<img src="'.$logo.'" '.$logoSize[1].' alt="" />'
-                                            );
-                                        ?>
-                                    </div>
-                                    <div class="sitename">
-                                        <h2 class="colored-text" style="font-family: 'Roboto Bold', sans-serif;"><?php echo strip_tags($conf['title']) ?></h2>
-                                    </div>
-                                    <div class="loggedin_as">
-                                        <p class="colored-text"><?php echo $lang['loggedinas'] . $_SERVER['REMOTE_USER'] ?></p>
-                                    </div>
-                                    
-                                </ul>
-                            </div>
-                        </nav>
-                    </aside>
-                    
+                    <?php include('tpl_sidebar.php'); ?>
                     <!-- [ Main Content (Right-side) ] -->
-                    
                     <main class="col bg-faded py-3">
                         
                         <!-- [ Breadcrumbs | Custom Breadcrumbs ] -->
@@ -119,13 +93,14 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
                                 <!-- [ Message Area ] -->
                                 <?php html_msgarea() ?>
                                 <!-- [ Main Page Content - Start ] -->
+                                
                                 <?php tpl_content($prependTOC = false) ?>
                                 <!-- [ Main Content - End] -->
                             </div>
                         </div>
                         
-                        <div class="container bg-faded ml-auto main-bg">
-                            <p class="colored-text"><?php tpl_pageinfo() ?></p>
+                        <div class="container bg-faded ml-auto main-bg pt-2 pb-1 mt-1" style="border-radius: 0.50rem;">
+                            <p class="colored-text" style="margin-top: 0.75rem;"><?php tpl_pageinfo() ?></p>
                         </div>
                     
                     </main>
@@ -144,18 +119,21 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
         </div>
         <div id="screen__mode" class="no"></div>
         
-        <hr class="a11y"/>
+        <!--<hr class="a11y"/> -->
         
+        <!--
         <div id="dokuwiki__pagetools">
-                <h3 class="a11y"><?php echo $lang['page_tools']; ?></h3>
+                <h3 class="a11y"><?php //echo $lang['page_tools']; ?></h3>
                 <div class="tools">
                     <ul>
-                        <?php echo (new \dokuwiki\Menu\PageMenu())->getListItems(); ?>
+                        <?php //echo (new \dokuwiki\Menu\PageMenu())->getListItems(); ?>
                     </ul>
                 </div>
             </div>
         </div>
         
+        <a href="#dokuwiki__top" class="back-to-top hidden-print btn btn-default btn-sm" title="<?php echo $lang['skip_to_content'] ?>" accesskey="t"><i class="fa fa-chevron-up"></i></a>
+        -->
         <?php 
             include('tpl_footer.php');
         ?>
