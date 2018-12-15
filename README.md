@@ -27,4 +27,5 @@
 7. Set the width of the breadcrumbs and pageinfo to match main width (100%)
 8. Add a hero section before main content
 9. Make sidebar collapsible :heavy_check_mark:
+
 10.Simplify footer
