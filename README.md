@@ -17,10 +17,14 @@
 
 <h3> To Do: </h3>
 
-<pre>
-1. Fill sidebar with meaningful contents and links
+<del>1. Fill sidebar with meaningful contents and links</del>
+1. Add TOC to sidebar with Bootstrap scrollspy
 2. Move login/user and page-settings dropdown to the right
-3. Insert the search button inside the search form
+3. <del>Insert the search button inside the search form</del> :heavy_check_mark:
 4. Fix accessibility component to the main content side
 5. Fix footer-links alignment
-</pre>
+6. Fix favicon not showing up
+7. Set the width of the breadcrumbs and pageinfo to match main width (100%)
+8. Add a hero section before main content
+9. Make sidebar collapsible :heavy_check_mark:
+10.Simplify footer
